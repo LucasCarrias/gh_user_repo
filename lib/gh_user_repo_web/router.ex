@@ -3,12 +3,14 @@ defmodule GhUserRepoWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug GhUserRepoWeb.Plugs.UuidChecker
   end
 
   scope "/api", GhUserRepoWeb do
     pipe_through :api
 
     get "/repos/:username", GitHubController, :repos
+    post "/users/login", UsersController, :login
   end
 
   # Enables LiveDashboard only for development

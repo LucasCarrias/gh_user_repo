@@ -10,6 +10,10 @@ import Config
 config :gh_user_repo,
   ecto_repos: [GhUserRepo.Repo]
 
+config :gh_user_repo, GhUserRepo.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
 # Configures the endpoint
 config :gh_user_repo, GhUserRepoWeb.Endpoint,
   url: [host: "localhost"],
@@ -36,6 +40,10 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :gh_user_repo, GhUserRepoWeb.Auth.Guardian,
+  issuer: "gh_user_repo",
+  secret_key: "bMq1NZTPNBrSrd/KgCj35r/VHerzqIQZhBPo6zFVGd7Yd/cN0UHrjqyWxhPKbxW/"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

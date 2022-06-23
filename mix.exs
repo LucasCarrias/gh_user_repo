@@ -47,7 +47,9 @@ defmodule GhUserRepo.MixProject do
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:bypass, "~> 2.1", only: :test}
+      {:bypass, "~> 2.1", only: :test},
+      {:pbkdf2_elixir, "~> 2.0"},
+      {:guardian, "~> 2.0"}
     ]
   end
 
